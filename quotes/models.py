@@ -9,7 +9,8 @@ class Quote(models.Model):
     views = models.IntegerField(default=0, null=False)
     likes = models.IntegerField(default=0, null=False)
 
+    # weight = models.IntegerField(default=0)
+
     def __str__(self):
         return f'{self.source} | {self.text[:10]}'
 
-    #weight = models.IntegerField(default=0)
