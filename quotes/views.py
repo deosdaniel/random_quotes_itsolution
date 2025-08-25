@@ -1,12 +1,17 @@
 from django.shortcuts import render
-
-import quotes
+from .models import Quote
 
 
 # Create your views here.
 
 def quotes_list(request):
-    return render(request, 'quotes/quotes_list.html')
+
+    quotes = Quote.objects.all()
+
+    return render(request, 'quotes/quotes_list.html', {'quotes': quotes})
+
+
+
 
 def random_quote(request):
     return render(request,'quotes/random_quote.html')

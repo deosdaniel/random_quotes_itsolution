@@ -5,7 +5,17 @@
 {% endblock %}
 
 {% block content %}
+    <section>
     <h1>Quotes List</h1>
+        {% for quote in quotes%}
+            <article class="quote">
+                <p>{{  quote.id }}</p>
+                <p>{{  quote.source }}</p>
+                <p>{{ quote.text }}</p>
+                <p>{{ quote.date_added }}</p>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}
 
 
