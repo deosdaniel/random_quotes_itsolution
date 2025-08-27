@@ -5,22 +5,17 @@
 {% endblock %}
 
 {% block main %}
-<div>
-    <p>Here's your quote</p>
-    <span> {{quote.source}}</span>
-    <span> "{{ quote.text}}"</span>
-    <span> Views: {{quote.views}} (+1) </span>
-    <span> Likes: {{quote.likes}}</span>
-</div>
-<div>
-    <a href="{% url 'like_quote' quote.id %}">
-        <button>Like</button>
-    </a>
-    <a href="{% url 'dislike_quote' quote.id %}">
-        <button>Dislike</button>
-    </a>
-</div>
-<div>
-    <p> Get <a href="{% url 'random_quote' %}">another one</a></p>
+<div class="quote-card">
+    <p class="quote-source">{{ quote.source }}</p>
+    <p class="quote-text">"{{ quote.text }}"</p>
+    <div class="quote-stats">
+        <span>Views: {{ quote.views }} (+1)</span>
+        <span>Likes: {{ quote.likes }}</span>
+    </div>
+    <div class="quote-buttons">
+        <a href="{% url 'like_quote' quote.id %}"><button class="like-btn">Like 👍</button></a>
+        <a href="{% url 'dislike_quote' quote.id %}"><button class="dislike-btn">Dislike 👎</button></a>
+    </div>
+    <p class="quote-link">Get <a href="{% url 'random_quote' %}">another one</a></p>
 </div>
 {% endblock %}

@@ -1,34 +1,59 @@
 {% extends 'layout.html' %}
 
-{% block title %}
-    Dashboard
-{% endblock %}
-
 {% block main %}
 <h2>Dashboard</h2>
+
 <h3>Top 10 Quotes by Likes</h3>
-<ul>
-    {% for quote in top_likes %}
-    <li>
-        <strong>{{ quote.source }}</strong>: "{{ quote.text }}" —
-        Likes: {{ quote.likes }}, Views: {{ quote.views }}
-    </li>
-    {% empty %}
-    <li>No quotes yet.</li>
-    {% endfor %}
-</ul>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Source</th>
+            <th>Text</th>
+            <th>Likes</th>
+            <th>Views</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quote in top_likes %}
+        <tr>
+            <td>{{ quote.source }}</td>
+            <td>{{ quote.text }}</td>
+            <td>{{ quote.likes }}</td>
+            <td>{{ quote.views }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No quotes yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 <h3>Top 10 Quotes by Views</h3>
-<ul>
-    {% for quote in top_views %}
-    <li>
-        <strong>{{ quote.source }}</strong>: "{{ quote.text }}" —
-        Views: {{ quote.views }}, Likes: {{ quote.likes }}
-    </li>
-    {% empty %}
-    <li>No quotes yet.</li>
-    {% endfor %}
-</ul>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Source</th>
+            <th>Text</th>
+            <th>Likes</th>
+            <th>Views</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quote in top_views %}
+        <tr>
+            <td>{{ quote.source }}</td>
+            <td>{{ quote.text }}</td>
+            <td>{{ quote.likes }}</td>
+            <td>{{ quote.views }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No quotes yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 <h3>Average Weight of Quotes</h3>
 <p>{{ avg_weight|default:"0" }}</p>

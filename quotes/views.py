@@ -32,6 +32,7 @@ def add_quote(request):
 
 def quote_detail(request, pk):
     q = Quote.objects.get(pk=pk)
+    Quote.objects.filter(pk=pk).update(views=F('views')+1)
     return render(request, 'quotes/quote_detail.html', {'quote': q})
 
 def random_quote(request):
