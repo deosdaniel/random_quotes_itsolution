@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db.models import F
 
 from .forms import QuoteForm
 from .models import Quote
@@ -26,4 +27,5 @@ def add_quote(request):
 
 def random_quote(request):
     q = get_random_quote()
+    Quote.objects.filter(pk=q.id).update(views=F('views')+1)
     return render(request,'quotes/random_quote.html', {'quote': q})
