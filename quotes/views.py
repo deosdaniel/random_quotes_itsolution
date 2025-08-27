@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.db.models import F
+from django.db.models import F, Avg
 
 from .forms import QuoteForm
 from .models import Quote
@@ -8,12 +8,17 @@ from .utils import get_random_quote
 
 # Create your views here.
 
-def quotes_list(request):
+def dashboard(request):
+    top_likes = Quote.objects.order_by('-likes')[:10]
+    top_views = Quote.objects.order_by('-views')[:10]
+    avg_weight = Quote.objects.aggregate(avg_weight=Avg('weight'))['avg_weight']
 
-    quotes = Quote.objects.all()
-
-    return render(request, 'quotes/quotes_list.html', {'quotes': quotes})
-
+    context = {
+        'top_likes': top_likes,
+        'top_views': top_views,
+        'avg_weight': avg_weight,
+    }
+    return render(request, 'quotes/quotes_list.html', context)
 
 def add_quote(request):
     if request.method == 'POST':
@@ -43,3 +48,4 @@ def dislike_quote(request, pk):
     if q.likes > 0:
         Quote.objects.filter(pk=pk).update(likes=F("likes") - 1)
     return redirect("quote_detail", pk=pk)
+

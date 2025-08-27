@@ -19,8 +19,10 @@ def run():
         source = random.choice(available)
         text = f"Test quote #{i+1} from {source}"
         weight = random.randint(1, 10)
+        views = random.randint(0,50)
+        likes = random.randint(0,50)
         try:
-            Quote.objects.create(source=source, text=text, weight=weight)
+            Quote.objects.create(source=source, text=text, weight=weight, views=views, likes=likes)
             counts[source] += 1
             i += 1
         except:

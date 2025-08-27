@@ -1,21 +1,36 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Quotes list
+    Dashboard
 {% endblock %}
 
 {% block main %}
-    <section>
-    <h1>Quotes List</h1>
-        {% for quote in quotes%}
-            <article class="quote">
-                <p>{{  quote.id }}</p>
-                <p>{{  quote.source }}</p>
-                <p>{{ quote.text }}</p>
-                <p>{{ quote.date_added }}</p>
-            </article>
-        {% endfor %}
-    </section>
-{% endblock %}
+<h2>Dashboard</h2>
+<h3>Top 10 Quotes by Likes</h3>
+<ul>
+    {% for quote in top_likes %}
+    <li>
+        <strong>{{ quote.source }}</strong>: "{{ quote.text }}" —
+        Likes: {{ quote.likes }}, Views: {{ quote.views }}
+    </li>
+    {% empty %}
+    <li>No quotes yet.</li>
+    {% endfor %}
+</ul>
 
+<h3>Top 10 Quotes by Views</h3>
+<ul>
+    {% for quote in top_views %}
+    <li>
+        <strong>{{ quote.source }}</strong>: "{{ quote.text }}" —
+        Views: {{ quote.views }}, Likes: {{ quote.likes }}
+    </li>
+    {% empty %}
+    <li>No quotes yet.</li>
+    {% endfor %}
+</ul>
+
+<h3>Average Weight of Quotes</h3>
+<p>{{ avg_weight|default:"0" }}</p>
+{% endblock %}
 
