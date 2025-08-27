@@ -3,7 +3,7 @@ from quotes.models import Quote
 from collections import Counter
 
 def run():
-    sources = ["Movie A", "Book B", "Series C", "Movie D", "Book E", "Movie F", "Book G", "Movie H", "Book K", "Movie L"]
+    sources = ["Сопрано", "Бойцовский клуб", "Большой куш", "Субмарина", "Гарри Поттер", "Бриллиантовая рука", "Самогонщики", "Москва слезам не верит", "Унесенные ветром", "Брат"]
     MAX_PER_SOURCE = 3
     TOTAL_QUOTES = 30
 
@@ -17,7 +17,7 @@ def run():
         if not available:
             break
         source = random.choice(available)
-        text = f"Test quote #{i+1} from {source}"
+        text = f"Тестовая цитата #{i+1} из '{source}'"
         weight = random.randint(1, 10)
         views = random.randint(0,50)
         likes = random.randint(0,50)
