@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-fi&+r-dl0)d#orle!hpeal!#j-e+d=nt#_#fmf+xqwx&+70xr#
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'www.deosdaniel.pythonanywhere.com',
-    'deosdaniel.pythonanywhere.com',
 ]
 
 
