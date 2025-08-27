@@ -4,7 +4,7 @@ from .models import Quote
 
 class QuoteForm(forms.ModelForm):
     weight = forms.ChoiceField(
-        choices=[(i, str(i)) for i in range(1, 11)]
+        choices=[(i, str(i)) for i in range(1, 11)],
     )
     class Meta:
         model = Quote

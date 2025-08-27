@@ -1,10 +1,11 @@
 {% extends 'layout.html' %}
 
-{% block title %}
-    Home
-{% endblock %}
+{% block title %}Главная{% endblock %}
 
 {% block main %}
-    <h1>Привет, это тестовое задание для IT-solution </h1>
+<div class="home-card">
+    <h1>Привет, это тестовое задание для IT-solution</h1>
     <p>Приложение, выдающее случайную цитату из книги или фильма</p>
+    <p><a href="{% url 'random_quote' %}" class="start-btn">Получить случайную цитату</a></p>
+</div>
 {% endblock %}

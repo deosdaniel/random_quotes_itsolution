@@ -1,61 +1,69 @@
 {% extends 'layout.html' %}
 
+{% block title %}Топ цитат{% endblock %}
+
 {% block main %}
-<h2>Dashboard</h2>
+<h2>Дашборд</h2>
 
-<h3>Top 10 Quotes by Likes</h3>
-<table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Source</th>
-            <th>Text</th>
-            <th>Likes</th>
-            <th>Views</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for quote in top_likes %}
-        <tr>
-            <td>{{ quote.source }}</td>
-            <td>{{ quote.text }}</td>
-            <td>{{ quote.likes }}</td>
-            <td>{{ quote.views }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">No quotes yet.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="dashboard-card">
+    <h3>Топ цитат по лайкам</h3>
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Text</th>
+                <th>Likes</th>
+                <th>Views</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in top_likes %}
+            <tr>
+                <td>{{ quote.source }}</td>
+                <td>{{ quote.text }}</td>
+                <td>{{ quote.likes }}</td>
+                <td>{{ quote.views }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No quotes yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-<h3>Top 10 Quotes by Views</h3>
-<table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Source</th>
-            <th>Text</th>
-            <th>Likes</th>
-            <th>Views</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for quote in top_views %}
-        <tr>
-            <td>{{ quote.source }}</td>
-            <td>{{ quote.text }}</td>
-            <td>{{ quote.likes }}</td>
-            <td>{{ quote.views }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4">No quotes yet.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="dashboard-card">
+    <h3>Топ цитат по просмотрам</h3>
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Text</th>
+                <th>Likes</th>
+                <th>Views</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in top_views %}
+            <tr>
+                <td>{{ quote.source }}</td>
+                <td>{{ quote.text }}</td>
+                <td>{{ quote.likes }}</td>
+                <td>{{ quote.views }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No quotes yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-<h3>Average Weight of Quotes</h3>
-<p>{{ avg_weight|default:"0" }}</p>
+<div class="dashboard-card">
+    <h3>Средний "вес" цитат</h3>
+    <p class="avg-weight">{{ avg_weight|default:"0" }}</p>
+</div>
+
 {% endblock %}
-
