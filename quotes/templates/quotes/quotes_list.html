@@ -1,11 +1,65 @@
 {% extends 'layout.html' %}
 
-{% block title %}
-    Quotes list
+{% block title %}Топ цитат{% endblock %}
+
+{% block main %}
+<h2>Дашборд</h2>
+
+<div class="dashboard-card">
+    <h3>Топ цитат по лайкам</h3>
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Источник</th>
+                <th>Цитата</th>
+                <th>Лайки</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in top_likes %}
+            <tr>
+                <td>{{ quote.source }}</td>
+                <td>{{ quote.text }}</td>
+                <td>{{ quote.likes }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No quotes yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="dashboard-card">
+    <h3>Топ цитат по просмотрам</h3>
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Источник</th>
+                <th>Цитата</th>
+                <th>Просмотры</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in top_views %}
+            <tr>
+                <td>{{ quote.source }}</td>
+                <td>{{ quote.text }}</td>
+                <td>{{ quote.views }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No quotes yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="dashboard-card">
+    <h3>Средний "вес" цитат</h3>
+    <p class="avg-weight">{{ avg_weight|default:"0" }}</p>
+</div>
+
 {% endblock %}
-
-{% block content %}
-    <h1>Quotes List</h1>
-{% endblock %}
-
-

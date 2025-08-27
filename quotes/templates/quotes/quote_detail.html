@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Цитата
+{% endblock %}
+
+{% block main %}
+<div class="quote-card">
+    <p class="quote-source">{{ quote.source }}</p>
+    <p class="quote-text">"{{ quote.text }}"</p>
+    <div class="quote-stats">
+        <span>Просмотры: {{ quote.views }} (+1) | </span>
+        <span>Лайки: {{ quote.likes }}</span>
+    </div>
+    <div class="quote-buttons">
+        <a href="{% url 'like_quote' quote.id %}"><button class="like-btn">Лайк 👍</button></a>
+        <a href="{% url 'dislike_quote' quote.id %}"><button class="dislike-btn">Дизлайк 👎</button></a>
+    </div>
+    <p class="quote-link">Получить <a href="{% url 'random_quote' %}">еще одну</a></p>
+</div>
+{% endblock %}

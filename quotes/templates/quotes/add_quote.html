@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}Добавить цитату{% endblock %}
+
+{% block main %}
+<div class="form-card">
+    <h2>Добавить цитату</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-btn">Добавить</button>
+    </form>
+</div>
+{% endblock %}
