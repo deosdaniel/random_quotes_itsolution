@@ -13,5 +13,5 @@ class QuoteForm(forms.ModelForm):
     def clean_source(self):
         source = self.cleaned_data['source']
         if Quote.objects.filter(source=source).count() >= 3:
-            raise forms.ValidationError("Maximum 3 quotes for a single source permitted")
+            raise forms.ValidationError("Разрешено не более 3 цитат из одного произведения")
         return source

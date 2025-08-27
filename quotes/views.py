@@ -42,7 +42,6 @@ def quote_detail(request, pk):
 
 def random_quote(request):
     q = get_random_quote()
-    Quote.objects.filter(pk=q.id).update(views=F('views')+1)
     return redirect('quote_detail', pk=q.pk, permanent=False)  # обычный редирект
 
 def like_quote(request, pk):

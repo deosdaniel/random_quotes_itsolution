@@ -3,9 +3,9 @@ from quotes.models import Quote
 from collections import Counter
 
 def run():
-    sources = ["Сопрано", "Бойцовский клуб", "Большой куш", "Субмарина", "Гарри Поттер", "Бриллиантовая рука", "Самогонщики", "Москва слезам не верит", "Унесенные ветром", "Брат"]
+    sources = ["Сопрано", "Бойцовский клуб", "Большой куш", "Брат"]
     MAX_PER_SOURCE = 3
-    TOTAL_QUOTES = 30
+    TOTAL_QUOTES = 12
 
     counts = Counter()
     for q in Quote.objects.all():
