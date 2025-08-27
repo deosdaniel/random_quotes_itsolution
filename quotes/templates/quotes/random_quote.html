@@ -5,10 +5,18 @@
 {% endblock %}
 
 {% block main %}
+<div>
     <p>Here's a random quote</p>
-<span> {{quote.source}}</span>
-<span> "{{ quote.text}}"</span>
-
-<span> Views: {{quote.views}} </span>
-<span> Likes: {{quote.likes}}</span>
+    <span> {{quote.source}}</span>
+    <span> "{{ quote.text}}"</span>
+    <span> Views: {{quote.views}} (+1) </span>
+    <span> Likes: {{quote.likes}}</span>
+</div>
+<div>
+    <button> Like</button>
+    <button> Dislike</button>
+</div>
+<div>
+    <p> Get <a href="">another one</a></p>
+</div>
 {% endblock %}
