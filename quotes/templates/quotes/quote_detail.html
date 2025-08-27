@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Random quote
+    Quote Detail
 {% endblock %}
 
 {% block main %}
 <div>
-    <p>Here's a random quote</p>
+    <p>Here's your quote</p>
     <span> {{quote.source}}</span>
     <span> "{{ quote.text}}"</span>
     <span> Views: {{quote.views}} (+1) </span>
@@ -21,6 +21,6 @@
     </a>
 </div>
 <div>
-    <p> Get <a href="">another one</a></p>
+    <p> Get <a href="{% url 'random_quote' %}">another one</a></p>
 </div>
 {% endblock %}

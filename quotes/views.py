@@ -25,7 +25,21 @@ def add_quote(request):
         form = QuoteForm()
     return render(request, 'quotes/add_quote.html', {'form': form})
 
+def quote_detail(request, pk):
+    q = Quote.objects.get(pk=pk)
+    return render(request, 'quotes/quote_detail.html', {'quote': q})
+
 def random_quote(request):
     q = get_random_quote()
     Quote.objects.filter(pk=q.id).update(views=F('views')+1)
-    return render(request,'quotes/random_quote.html', {'quote': q})
+    return redirect('quote_detail', pk=q.pk)
+
+def like_quote(request, pk):
+    Quote.objects.filter(id=pk).update(likes=F('likes')+1)
+    return redirect("quote_detail", pk=pk)
+
+def dislike_quote(request, pk):
+    q = Quote.objects.get(pk=pk)
+    if q.likes > 0:
+        Quote.objects.filter(pk=pk).update(likes=F("likes") - 1)
+    return redirect("quote_detail", pk=pk)
