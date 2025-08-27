@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.template.defaultfilters import random
-from django.db.models import F
 
 from .forms import QuoteForm
 from .models import Quote
