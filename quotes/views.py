@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.template.defaultfilters import random
+
 from .models import Quote
 
 
@@ -14,4 +16,6 @@ def quotes_list(request):
 
 
 def random_quote(request):
-    return render(request,'quotes/random_quote.html')
+    q = Quote.objects.order_by('?').first()
+    context = {'quote': q}
+    return render(request,'quotes/random_quote.html', context)

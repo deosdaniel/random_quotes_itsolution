@@ -4,6 +4,11 @@
     Random quote
 {% endblock %}
 
-{% block content %}
+{% block main %}
     <p>Here's a random quote</p>
+<span> {{quote.source}}</span>
+<span> "{{ quote.text}}"</span>
+
+<span> Views: {{quote.views}} </span>
+<span> Likes: {{quote.likes}}</span>
 {% endblock %}

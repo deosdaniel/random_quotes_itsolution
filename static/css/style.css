@@ -10,8 +10,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
-    background-color: #000;
+    font-size: 1rem;
+    background-color: #000000;
     color: white;
 }
 
